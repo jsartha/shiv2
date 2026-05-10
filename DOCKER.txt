@@ -1,0 +1,14 @@
+wsl --update
+docker images
+1docker pull openjdk
+1docker pull eclipse -temurin:17
+
+2. docker run --name java -it -d eclipse -temurin:17
+
+3. docker ps
+
+4. docker exec -it java bash
+
+5. jshell
+System.out.println("Hello Java");
+6./exit
