@@ -1,0 +1,221 @@
+npm install -g @angular/cli
+
+ng new user-app
+
+cd user-app
+
+ng generate component register
+ng generate component login
+ng generate component profile
+
+2. app.ts
+import { Component, signal } from '@angular/core';
+import { RouterOutlet, RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+
+  imports: [RouterOutlet, RouterLink],
+
+  templateUrl: './app.html',
+
+  styleUrl: './app.css'
+})
+export class App {
+
+  protected readonly title = signal('user-app');
+
+}
+
+3. app.html
+<div class="container">
+
+<h1>User App</h1>
+
+<nav>
+
+<a routerLink="/">Register</a>
+
+<a routerLink="/login">Login</a>
+
+<a routerLink="/profile">Profile</a>
+
+</nav>
+
+<hr>
+
+<router-outlet></router-outlet>
+
+</div>
+
+
+4.register.component.ts
+
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-register',
+
+  imports: [FormsModule],
+
+  templateUrl: './register.html',
+
+  styleUrl: './register.css'
+})
+export class RegisterComponent {
+
+  user = {
+    name: '',
+    email: ''
+  };
+
+  register() {
+
+    localStorage.setItem('user', JSON.stringify(this.user));
+
+    alert("Registered");
+  }
+
+}
+
+
+
+5.register.component.html
+<h2>Register</h2>
+
+<input
+type="text"
+placeholder="Enter Name"
+[(ngModel)]="user.name">
+
+<br><br>
+
+<input
+type="email"
+placeholder="Enter Email"
+[(ngModel)]="user.email">
+
+<br><br>
+
+<button (click)="register()">
+Register
+</button>
+
+
+6.login.component.ts
+
+<h2>Login</h2>
+
+<input
+type="email"
+placeholder="Enter Email"
+[(ngModel)]="email">
+
+<br><br>
+
+<button (click)="login()">
+Login
+</button>
+
+7.login.component.html
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-profile',
+
+  imports: [],
+
+  templateUrl: './profile.html',
+
+  styleUrl: './profile.css'
+})
+export class ProfileComponent implements OnInit {
+
+  user: any;
+
+  ngOnInit() {
+
+    this.user = JSON.parse(
+      localStorage.getItem('user') || '{}'
+    );
+
+  }
+
+}
+
+
+8.profile.component.html
+
+<h2>Profile</h2>
+
+<p>Name: {{user.name}}</p>
+
+<p>Email: {{user.email}}</p>
+
+
+
+9. ng serve
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
