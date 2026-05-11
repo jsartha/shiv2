@@ -1,0 +1,20 @@
+docker pull python:3.12
+docker pull python
+
+
+docker images    // latest image
+
+docker run --name py -it python   // docker run create container  // --name py  image created  // it  initiate terminal  // python image
+
+python    
+
+or   ..... usualy open python automatically
+
+python3
+
+
+docker ps    /// running container show
+docker ps -a  ///All Container
+
+
+docker exec -it py bash  ---- open execist python 
